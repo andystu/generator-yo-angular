@@ -22,14 +22,12 @@
     "gulp",
     "angular"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "yeoman-generator": "~0.17",
     "chalk": "~0.5",
     "bower":"*",
     "gulp": "^3.8.9",
-    "scp2": "*"
-  },
-  "peerDependencies": {
+    "scp2": "*",
     "yo": ">=1.0.0"
   }
 }
