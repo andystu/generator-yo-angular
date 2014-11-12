@@ -1,22 +1,18 @@
 {
-  "name": "generator-gulp-ng",
-  "version": "1.0.3",
+  "name": "generator-yo-angular",
+  "version": "1.0.0",
   "description": "Yeoman generator for gulp+angular",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/zckrs/generator-gulp-ng"
+    "url": "git://github.com/bob76828/yo-angular-generator"
   },
   "main": "app/index.js",
   "contributors": [
-    "Mehdy Dara <mdara@eleven-labs.com> (http://eleven-labs.com/)",
-    "Jessie Evangelista <jessie@henyo.com> (https://github.com/henyojess)"
+    "Bob Lin <bob76828@gmail.com> (https://github.com/bob76828/)"
   ],
   "engines": {
     "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "mocha"
   },
   "files": [
     "app"
@@ -24,15 +20,14 @@
   "keywords": [
     "yeoman-generator",
     "gulp",
-    "angular",
-    "karma"
+    "angular"
   ],
   "dependencies": {
     "yeoman-generator": "~0.17",
-    "chalk": "~0.5"
-  },
-  "devDependencies": {
-    "mocha": "~1.20"
+    "chalk": "~0.5",
+    "bower":"*",
+    "gulp": "^3.8.9",
+    "scp2": "*"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

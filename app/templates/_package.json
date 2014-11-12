@@ -1,16 +1,41 @@
 {
-  "name": "gulp-ng-seed",
+  "name": "<%= _.slugify(appname) %>",
   "version": "0.0.1",
-  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "require-dir": "*",
+    "run-sequence": "*",
+    "gulp-watch": "0.7.1",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-sourcemaps": "*",
+    "del": "*",
+    "main-bower-files": "*",
+    "gulp-inject": "*",
+    "gulp-coffee": "*",
+    "gulp-minify-css": "*",
+    "gulp-filter": "*",
+    "gulp-html-replace": "*",
+    "gulp-ng-annotate": "*",
+    "merge-stream": "*",
+    "gulp-sass": "0.7.3",
+    "gulp-ng-html2js": "*",
+    "gulp-inject-string": "*",
+    "gulp-htmlmin": "*",
+    "gulp-git": "*",
+    "gulp-ssh":"*",
+    "q":"*",
+    "gulp-jshint":"*",
+    "jshint-stylish":"*",
+    "gulp-uncss":"*",
+    "glob":"*"
+  },
   "devDependencies": {
-    "gulp": "~3.8",
-    "gulp-concat": "~2.3",
-    "gulp-jshint": "~1.7",
-    "gulp-load-plugins": "~0.5",
-    "gulp-angular-templatecache": "~1.2",
-    "gulp-webserver": "~0.3",
-    "karma": "~0.12",
-    "karma-jasmine": "~0.1",
-    "karma-chrome-launcher": "~0.1"
+    "gulp": "^3.8.9",
+    "scp2": "*",
+    "bower":"*"
+  },
+  "scripts": {
+    "install":"bower install"
   }
 }

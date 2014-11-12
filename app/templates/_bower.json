@@ -1,22 +1,43 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= scriptAppName %>",
   "main": "app.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
-    "jessie <jessie@apollo.com.ph>"
+    "Bob Lin <bob76828@gmail.com>"
   ],
   "license": "MIT",
   "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
-  "devDependencies": {
-    "angular": "~1.2.14",
-    "angular-route": "~1.2.14"
+  "overrides": {
+    "jquery": {
+      "main": "dist/jquery.min.js"
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
+      ]
+    },
+    "angular": {
+      "main": "./angular.min.js"
+    },
+    "angular-resource": {
+      "main": "./angular-resource.min.js"
+    },
+    "angular-ui-router": {
+      "main": "./release/angular-ui-router.min.js"
+    }
+  },
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.22",
+    "angular-resource": "~1.2.22",
+    "angular-ui-router": "~0.2.10"
   }
 }
 
