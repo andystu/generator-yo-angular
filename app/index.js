@@ -32,7 +32,7 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('This generator will generate a web app project using gulp, bower and angularjs.'));
+    this.log(chalk.magenta('This generator will generate a web app project using gulp, bower and angularJS.'));
 
     var prompts = [];
 
@@ -50,7 +50,6 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
 
     this.mkdir('assets/app');
     this.copy('assets/app/_app.js', 'assets/app/app.js');
-    this.copy('assets/app/_index.html','assets/app/index.html');
     this.copy('assets/app/_initializer.js', 'assets/app/initializer.js');
     this.copy('assets/app/_route.js', 'assets/app/route.js');
 

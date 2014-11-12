@@ -4,7 +4,7 @@ angular.module('<%= scriptAppName %>', [
   'ng.router', 'ng.controller', 'ng.model', 'ng.service', 'ng.directive']);
 
 //url slash
-angular.module('<%= scriptAppName %>').config(['$httpProvider', '$urlRouterProvider',
+angular.module('<%= scriptAppName %>').config(
   function ($httpProvider, $urlRouterProvider) {
     //$httpProvider.defaults.useXDomain = true;
     //$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
@@ -24,7 +24,7 @@ angular.module('<%= scriptAppName %>').config(['$httpProvider', '$urlRouterProvi
       return path + '/';
     });
     $urlRouterProvider.otherwise('/');
-  }]);
+  });
 
 angular.element(document).ready(function () {
   angular.bootstrap(document, ['<%= scriptAppName %>']);

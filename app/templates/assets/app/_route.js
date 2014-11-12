@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('ng.router').config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+angular.module('ng.router').config(function ($urlRouterProvider, $stateProvider) {
   $stateProvider.state('common', {
     abstract: true,
     url: '',
@@ -20,4 +20,4 @@ angular.module('ng.router').config(['$urlRouterProvider', '$stateProvider', func
       }
     }
   });
-}]);
+});
