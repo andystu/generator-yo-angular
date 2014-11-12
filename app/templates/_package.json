@@ -28,7 +28,8 @@
     "gulp-jshint":"*",
     "jshint-stylish":"*",
     "gulp-uncss":"*",
-    "glob":"*"
+    "glob":"*",
+    "browser-sync":"*"
   },
   "devDependencies": {
     "gulp": "^3.8.9",

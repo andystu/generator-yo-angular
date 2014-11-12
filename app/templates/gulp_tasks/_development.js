@@ -6,10 +6,11 @@ var gulp = require('gulp'),
   inject = require('gulp-inject'),
   del = require('del'),
   sass = require('gulp-sass'),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  browserSync = require('browser-sync');
 
 var paths = {
-  scripts:[
+  scripts: [
     'assets/vendor/js/**/*.js',
     'assets/app/initializer.js',
     'assets/app/app.js',
@@ -17,33 +18,37 @@ var paths = {
     'assets/app/*/**/*.js',
     'assets/common/**/*.js'
   ],
-  styles:[
+  styles: [
     'assets/vendor/css/**/*.css',
     'assets/css/*.scss'
   ],
   images: 'assets/images/**/*'
 };
 
+var reload = browserSync.reload;
+
 gulp.task('dev_inject', function () {
-  // It's not necessary to read the files (will speed up things), we're only after their paths:
-  watch({glob: ['assets/app/**/*','assets/common/**/*','assets/css/**/*']}, function() {
+  watch({glob: ['assets/index.html','assets/app/**/*', 'assets/common/**/*', 'assets/css/**/*']}, function () {
 
     var style = gulp.src(paths.styles)
       .pipe(sass())
       .pipe(gulp.dest('./development/public/css'));
 
-    gulp.src('./assets/index.html')
-      .pipe(inject(style, {addRootSlash: false ,addPrefix:'..'}))
-      .pipe(inject(gulp.src(paths.scripts, {read: false}), {addRootSlash: false ,addPrefix:'..'}))
-      .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower',addRootSlash: false ,addPrefix:'..'}))
-      .pipe(gulp.dest('./development'));
+    return gulp.src('./assets/index.html')
+      .pipe(inject(style, {addRootSlash: false, addPrefix: '..'}))
+      .pipe(inject(gulp.src(paths.scripts, {read: false}), {addRootSlash: false, addPrefix: '..'}))
+      .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower', addRootSlash: false, addPrefix: '..'}))
+      .pipe(gulp.dest('./development'))
+      .pipe(reload({stream:true}));
   });
 });
 
 // Copy all static images
-gulp.task('dev_images', function() {
-  watch({glob: paths.images}, function(files) {
-    return files.pipe(gulp.dest('./development/public/images'));
+gulp.task('dev_images', function () {
+  watch({glob: paths.images}, function (files) {
+    return files
+      .pipe(gulp.dest('./development/public/images'))
+      .pipe(reload({stream:true}));
   });
 });
 
@@ -52,7 +57,20 @@ gulp.task('dev_clean', function (cb) {
   console.log('Files deleted');
 });
 
+gulp.task('browser-sync', function () {
+  browserSync({
+    server: {
+      baseDir: "development",
+      routes: {
+        "/bower_components": "bower_components",
+        "/assets": "assets",
+        "/development": "development"
+      }
+    }
+  });
+});
+
 //developmnet
-gulp.task('default',function(callback) {
-  runSequence('dev_clean','dev_inject','dev_images',callback);
+gulp.task('default', function (callback) {
+  runSequence('dev_clean', 'dev_inject', 'dev_images', 'browser-sync', callback);
 });
