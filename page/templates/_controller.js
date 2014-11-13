@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('ng.controller').controller('<%= scriptCtrlName %>Ctrl' ,
+angular.module('ng.controller').controller('<%= scriptPageName %>Ctrl' ,
   function($scope) {
 
   }

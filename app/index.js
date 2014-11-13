@@ -6,45 +6,31 @@ var chalk = require('chalk');
 
 
 var YoAngularGenerator = yeoman.generators.Base.extend({
-  constructor: function () {
-    // Calling the super constructor is important so our generator is correctly set up
-    yeoman.Base.apply(this, arguments);
-    this.argument('appname', { type: String, required: false });
-    this.appname = this.appname || path.basename(process.cwd());
-    this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
-    this.scriptAppName = this.appname;
-  },
-
   init: function () {
     this.pkg = require('../package.json');
-
     this.on('end', function () {
       if (!this.options['skip-install']) {
         this.installDependencies();
       }
     });
   },
-
-  askFor: function () {
+  promptTask: function () {
     var done = this.async();
-
     // have Yeoman greet the user
     this.log(this.yeoman);
-
     // replace it with a short and sweet description of your generator
     this.log(chalk.magenta('This generator will generate a web app project using gulp, bower and angularJS.'));
-
-    var prompts = [];
-
-    this.prompt(prompts, function (props) {
-      this.name = props.name;
-
+    this.prompt({
+      type: 'input',
+      name: 'name',
+      message: 'Your module name',
+      default: this.appname // Default to current folder name
+    }, function (answers) {
+      this.scriptAppName = answers.name;
       done();
     }.bind(this));
   },
-
   app: function () {
-
     this.mkdir('assets');
     this.copy('assets/_index.html', 'assets/index.html');
 
@@ -102,7 +88,6 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
     this.copy('gulp_tasks/_jshint.js', 'gulp_tasks/jshint.js');
     this.copy('gulp_tasks/_production.js', 'gulp_tasks/production.js');
   },
-
   projectfiles: function () {
     this.copy('_.gitignore', '.gitignore');
     this.copy('_.jshintrc', '.jshintrc');
