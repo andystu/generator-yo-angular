@@ -58,18 +58,24 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
     this.copy('assets/app/main/_mainCtrl.js', 'assets/app/main/mainCtrl.js');
 
     this.mkdir('assets/common');
+    this.mkdir('assets/common/controllers');
+    this.copy('assets/common/controllers/_readMe.txt', 'assets/common/controllers/readMe.txt');
+    this.copy('assets/common/controllers/_headerCtrl.js', 'assets/common/controllers/headerCtrl.js');
+
     this.mkdir('assets/common/directives');
     this.copy('assets/common/directives/_readMe.txt', 'assets/common/directives/readMe.txt');
 
     this.mkdir('assets/common/layout');
     this.copy('assets/common/layout/_layout.html', 'assets/common/layout/layout.html');
+    this.copy('assets/common/layout/_footer.html', 'assets/common/layout/footer.html');
+    this.copy('assets/common/layout/_header.html', 'assets/common/layout/header.html');
+
 
     this.mkdir('assets/common/models');
     this.copy('assets/common/models/_readMe.txt', 'assets/common/models/readMe.txt');
 
     this.mkdir('assets/common/partials');
-    this.copy('assets/common/partials/_footer.html', 'assets/common/partials/footer.html');
-    this.copy('assets/common/partials/_header.html', 'assets/common/partials/header.html');
+    this.copy('assets/common/partials/_readMe.txt', 'assets/common/partials/readMe.txt');
 
     this.mkdir('assets/common/services');
     this.copy('assets/common/services/_readMe.txt', 'assets/common/services/readMe.txt');

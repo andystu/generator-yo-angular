@@ -9,14 +9,15 @@ angular.module('ng.router').config(function ($urlRouterProvider, $stateProvider)
     url: "/",
     views: {
       "header@common": {
-        templateUrl: '../assets/common/partials/header.html'
+        templateUrl: '../assets/common/layout/header.html',
+        controller: 'headerCtrl'
       },
       "section@common": {
         templateUrl: '../assets/app/main/content.html',
         controller: 'mainCtrl'
       },
       "footer@common": {
-        templateUrl: '../assets/common/partials/footer.html'
+        templateUrl: '../assets/common/layout/footer.html'
       }
     }
   });
