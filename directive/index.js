@@ -50,7 +50,6 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
   app: function () {
-    this.mkdir('assets/app/' + this.scriptDirectiveName);
     this.copy('_directive.js', 'assets/common/directives/' + this.scriptDirectiveName + '.js');
   }
 });
