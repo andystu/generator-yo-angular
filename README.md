@@ -64,7 +64,7 @@ It takes advantage of the gulp build tool and makes use of bower and npm for dep
 -----
 
 #### USAGE ####
-1) npm install -g generator-yo-angular
+1) npm install -g bob76828/generator-yo-angular
 
 2) mkdir myApp && cd myApp && yo yo-angular
 
