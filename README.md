@@ -58,6 +58,8 @@ It takes advantage of the gulp build tool and makes use of bower and npm for dep
 - npm [http://www.npmjs.org/][3]
 - bower [http://bower.io/][4]
 - gulp.js [http://gulpjs.com/][5]
+- yo [https://github.com/yeoman/yo][6]
+- yeoman-generator [https://github.com/yeoman/generator-generator][7]
 
 -----
 
@@ -73,7 +75,7 @@ It takes advantage of the gulp build tool and makes use of bower and npm for dep
 ----
 
 #### Support ####
-For questions and issues: [https://github.com/bob76828/generator-yo-angular/issues][7]
+For questions and issues: [https://github.com/bob76828/generator-yo-angular/issues][8]
 
 
   [1]: https://github.com/angular/angular-seed
@@ -81,4 +83,6 @@ For questions and issues: [https://github.com/bob76828/generator-yo-angular/issu
   [3]: http://www.npmjs.org/
   [4]: http://bower.io/
   [5]: http://gulpjs.com/
-  [7]: https://github.com/henyojess/generator-gulp-ng/issues
+  [6]: https://github.com/yeoman/yo
+  [7]: https://github.com/yeoman/generator-generator
+  [8]: https://github.com/henyojess/generator-gulp-ng/issues
