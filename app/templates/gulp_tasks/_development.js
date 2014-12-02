@@ -38,6 +38,7 @@ gulp.task('dev_inject', function () {
       .pipe(inject(style, {addRootSlash: false, addPrefix: '..'}))
       .pipe(inject(gulp.src(paths.scripts, {read: false}), {addRootSlash: false, addPrefix: '..'}))
       .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower', addRootSlash: false, addPrefix: '..'}))
+      .pipe(inject(gulp.src("bower_components/modernizr/modernizr.js", {read: false}), {name: 'modernizr', addRootSlash: false, addPrefix: '..'}))
       .pipe(gulp.dest('./development'))
       .pipe(reload({stream:true}));
   });

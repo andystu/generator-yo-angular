@@ -32,7 +32,13 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
   },
   app: function () {
     this.mkdir('assets');
+    this.copy('assets/_404.html', 'assets/404.html');
+    this.copy('assets/_apple-touch-icon-precomposed.png', 'assets/apple-touch-icon-precomposed.png');
+    this.copy('assets/_crossdomain.xml', 'assets/crossdomain.xml');
+    this.copy('assets/_favicon.ico', 'assets/favicon.ico');
+    this.copy('assets/_humans.txt', 'assets/humans.txt');
     this.copy('assets/_index.html', 'assets/index.html');
+    this.copy('assets/_robots.txt', 'assets/robots.txt');
 
     this.mkdir('assets/app');
     this.copy('assets/app/_app.js', 'assets/app/app.js');
@@ -81,6 +87,7 @@ var YoAngularGenerator = yeoman.generators.Base.extend({
 
     this.mkdir('assets/vendor/js');
     this.copy('assets/vendor/js/_readMe.txt', 'assets/vendor/js/readMe.txt');
+    this.copy('assets/vendor/js/_plugins.js', 'assets/vendor/js/plugins.js');
 
     this.mkdir('gulp_tasks');
     this.copy('gulp_tasks/_deploy.js', 'gulp_tasks/deploy.js');

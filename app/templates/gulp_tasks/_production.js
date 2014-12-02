@@ -39,6 +39,14 @@ var paths = {
   fonts: [
     'bower_components/bootstrap/dist/fonts/*',
     'bower_components/font-awesome/fonts/*'
+  ],
+  others: [
+    'assets/404.html',
+    'assets/apple-touch-icon-precomposed.png',
+    'assets/crossdomain.xml',
+    'assets/favicon.ico',
+    'assets/humans.txt',
+    'assets/robots.txt'
   ]
 };
 
@@ -59,7 +67,8 @@ gulp.task('replace', function () {
   return gulp.src('./assets/index.html')
     .pipe(htmlreplace({
       'css': 'public/css/app.min.css?v=' + version,
-      'js': 'public/js/app.min.js?v=' + version
+      'js': 'public/js/app.min.js?v=' + version,
+      'modernizr': 'public/js/modernizr.min.js'
     }))
     .pipe(gulp.dest('release'));
 });
@@ -89,6 +98,13 @@ gulp.task('bower', ['clean'], function () {
     .pipe(gulp.dest('release/public/tmp'));
 
   return merge(js, css);
+});
+
+gulp.task('modernizr', ['clean'], function () {
+  return gulp.src("bower_components/modernizr/modernizr.js")
+    .pipe(concat('modernizr.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('release/public/js'));
 });
 
 gulp.task('vendor', ['clean'], function () {
@@ -179,26 +195,26 @@ gulp.task('clean_tmp', function (cb) {
   console.log('tmp deleted');
 });
 
-gulp.task('copy_views', function () {
-  return gulp.src('assets/views/**/*')
-    .pipe(gulp.dest('release/views'));
-});
-
 gulp.task('inject_partials', function () {
   // It's not necessary to read the files (will speed up things), we're only after their paths:
   return gulp.src('assets/app/app.js')
-    .pipe(injectString.after('angular.module(\'<%= scriptAppName %>\', [', '"ui.partials",'))
+    .pipe(injectString.after('angular.module(\'test\', [', '"ui.partials",'))
     .pipe(gulp.dest('release/public/tmp'));
+});
+
+gulp.task('copy_others', function () {
+  return gulp.src(paths.others)
+    .pipe(gulp.dest('release'));
 });
 
 //production
 gulp.task('production', function (callback) {
   runSequence('remove_release',
     'inject_partials',
-    ['bower', 'vendor'],
+    ['modernizr','bower', 'vendor'],
     ['styles', 'scripts', 'images', 'views', 'layout'],
     'combine',
-    'replace',
+    ['replace','copy_others'],
     'clean_tmp',
     callback);
 });
