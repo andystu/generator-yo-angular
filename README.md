@@ -82,7 +82,7 @@ Available generators:
 * yo-angular
 * yo-angular:page
 * yo-angular:directive
-* yo-angular:model]
+* yo-angular:model
 * yo-angular:controller
 * yo-angular:service
 
