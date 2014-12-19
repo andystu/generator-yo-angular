@@ -198,7 +198,7 @@ gulp.task('clean_tmp', function (cb) {
 gulp.task('inject_partials', function () {
   // It's not necessary to read the files (will speed up things), we're only after their paths:
   return gulp.src('assets/app/app.js')
-    .pipe(injectString.after('angular.module(\'test\', [', '"ui.partials",'))
+    .pipe(injectString.after('angular.module(\'<%= scriptAppName %>\', [', '"ui.partials",'))
     .pipe(gulp.dest('release/public/tmp'));
 });
 
